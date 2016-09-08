@@ -11,7 +11,7 @@ function synth({ context, note }) {
 
   const frequency = frequencyFromNoteNumber(note);
   oscillator.frequency.value = frequency;
-  oscillator.type = 'sawtooth';
+  oscillator.type = 'sine';
 
   oscillator.connect(amp);
   amp.connect(context.destination);

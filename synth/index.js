@@ -106,10 +106,10 @@ const supersawPreset = {
 const filterPreset = {...supersawPreset, filterFrequency: 3556, filterResonance: 16, lfoFrequency: 8};
 
 controls.addTrigger(9, () => controls.loadPreset(initial));
-controls.addTrigger(10, () => controls.loadPreset(adsr));
-controls.addTrigger(11, () => controls.loadPreset(adsrSine));
-controls.addTrigger(12, () => controls.loadPreset(adsrTri));
-controls.addTrigger(25, () => controls.loadPreset(adsrSquare));
+controls.addTrigger(10, () => controls.loadPreset(adsrSine));
+controls.addTrigger(11, () => controls.loadPreset(adsrTri));
+controls.addTrigger(12, () => controls.loadPreset(adsrSquare));
+controls.addTrigger(25, () => controls.loadPreset(adsr));
 controls.addTrigger(26, () => controls.loadPreset(supersawPreset));
 controls.addTrigger(27, () => controls.loadPreset(filterPreset));
 

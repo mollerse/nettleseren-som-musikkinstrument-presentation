@@ -38,7 +38,7 @@ const config = {
   attack: 0.5,
   decay: 0.5,
   release: 1,
-  type: 'sawtooth'
+  type: 'sine'
 };
 
 const activeVoices = {};

@@ -133,7 +133,7 @@ class Slides extends Component {
               { loc: [11, 12], title: "Regner ut frekvensen" },
               { loc: [3, 6], title: "Hjelpefunksjon" },
               { loc: [12, 13], title: "Setter frekvensen" },
-              { loc: [13, 14], title: "Vi endrer også typen" },
+              { loc: [13, 14], title: "Vi setter typen" },
               { loc: [35, 39], title: "Deaktivere noten" },
             ]}
           />
