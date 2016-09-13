@@ -63551,8 +63551,8 @@ var Slides = function (_Component) {
             transition: [],
             className: 'codeslide',
             lang: 'js',
-            code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note }) {\n  const oscillator = context.createOscillator();\n  const amp = context.createGain();\n\n  const frequency = frequencyFromNoteNumber(note);\n  oscillator.frequency.value = frequency;\n  oscillator.type = 'sawtooth';\n\n  oscillator.connect(amp);\n  amp.connect(context.destination);\n\n  oscillator.start();\n  amp.gain.value = 0.3;\n\n  function stop() {\n    amp.gain.value = 0;\n    oscillator.stop();\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
-            ranges: [{ loc: [0, 0], title: "Kunne spille flere noter" }, { loc: [31, 32], title: "Et sted å lagre aktive noter" }, { loc: [34, 35], title: "Lagre den aktive noten" }, { loc: [34, 35], title: "Og sender med som argument" }, { loc: [7, 8], title: "Vi tar inn note argument" }, { loc: [11, 12], title: "Regner ut frekvensen" }, { loc: [3, 6], title: "Hjelpefunksjon" }, { loc: [12, 13], title: "Setter frekvensen" }, { loc: [13, 14], title: "Vi endrer også typen" }, { loc: [35, 39], title: "Deaktivere noten" }]
+            code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note }) {\n  const oscillator = context.createOscillator();\n  const amp = context.createGain();\n\n  const frequency = frequencyFromNoteNumber(note);\n  oscillator.frequency.value = frequency;\n  oscillator.type = 'sine';\n\n  oscillator.connect(amp);\n  amp.connect(context.destination);\n\n  oscillator.start();\n  amp.gain.value = 0.3;\n\n  function stop() {\n    amp.gain.value = 0;\n    oscillator.stop();\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
+            ranges: [{ loc: [0, 0], title: "Kunne spille flere noter" }, { loc: [31, 32], title: "Et sted å lagre aktive noter" }, { loc: [34, 35], title: "Lagre den aktive noten" }, { loc: [34, 35], title: "Og sender med som argument" }, { loc: [7, 8], title: "Vi tar inn note argument" }, { loc: [11, 12], title: "Regner ut frekvensen" }, { loc: [3, 6], title: "Hjelpefunksjon" }, { loc: [12, 13], title: "Setter frekvensen" }, { loc: [13, 14], title: "Vi setter typen" }, { loc: [35, 39], title: "Deaktivere noten" }]
           }),
           _react2.default.createElement(
             _spectacle.Slide,
@@ -63610,7 +63610,7 @@ var Slides = function (_Component) {
             transition: [],
             className: 'codeslide',
             lang: 'js',
-            code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note, config }) {\n  const oscillator = context.createOscillator();\n  const amp = context.createGain();\n\n\n  const frequency = frequencyFromNoteNumber(note);\n  oscillator.frequency.value = frequency;\n  oscillator.type = config.type;\n\n  oscillator.connect(amp);\n  amp.connect(context.destination);\n\n  oscillator.start();\n\n  const t = context.currentTime;\n  amp.gain.linearRampToValueAtTime(config.gain * 2, t + config.attack);\n  amp.gain.linearRampToValueAtTime(config.gain, t + config.attack + config.decay);\n\n  function stop() {\n    const tStop = context.currentTime + config.release;\n    amp.gain.linearRampToValueAtTime(0, tStop);\n    oscillator.stop(tStop);\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\nconst config = {\n  gain: 0.3,\n  attack: 0.5,\n  decay: 0.5,\n  release: 1,\n  type: 'sawtooth'\n};\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note, config });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
+            code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note, config }) {\n  const oscillator = context.createOscillator();\n  const amp = context.createGain();\n\n\n  const frequency = frequencyFromNoteNumber(note);\n  oscillator.frequency.value = frequency;\n  oscillator.type = config.type;\n\n  oscillator.connect(amp);\n  amp.connect(context.destination);\n\n  oscillator.start();\n\n  const t = context.currentTime;\n  amp.gain.linearRampToValueAtTime(config.gain * 2, t + config.attack);\n  amp.gain.linearRampToValueAtTime(config.gain, t + config.attack + config.decay);\n\n  function stop() {\n    const tStop = context.currentTime + config.release;\n    amp.gain.linearRampToValueAtTime(0, tStop);\n    oscillator.stop(tStop);\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\nconst config = {\n  gain: 0.3,\n  attack: 0.5,\n  decay: 0.5,\n  release: 1,\n  type: 'sine'\n};\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note, config });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
             ranges: [{ loc: [0, 0], title: "Implementere ADSR" }, { loc: [35, 43], title: "Sette opp config" }, { loc: [46, 47], title: "Sender med config" }, { loc: [7, 8], title: "Vi tar inn en config" }, { loc: [14, 15], title: "Lese fra config" }, { loc: [21, 22], title: "Leser av tiden" }, { loc: [22, 23], title: "Skedulering av attack" }, { loc: [23, 24], title: "Skedulering av decay" }, { loc: [25, 30], title: "Skedulering av release" }]
           }),
           _react2.default.createElement(
@@ -63911,6 +63911,7 @@ var Controls = function () {
     _classCallCheck(this, Controls);
 
     this.controls = {};
+    this.triggers = {};
 
     // Configure analyser
     var analyser = context.createAnalyser();
@@ -63921,16 +63922,24 @@ var Controls = function () {
     device.on('data', function (_ref) {
       var _ref2 = _slicedToArray(_ref, 3);
 
+      var event = _ref2[0];
       var knobId = _ref2[1];
       var value = _ref2[2];
 
       if (_this.debug) {
-        console.log(knobId, value);
+        console.log(event, knobId, value);
       }
 
-      var control = _this.controls[knobId];
-      if (control) {
-        control(value);
+      if (event === 176) {
+        var control = _this.controls[knobId];
+        if (control) {
+          control(value, event);
+        }
+      } else if (event === 144) {
+        var trigger = _this.triggers[knobId];
+        if (trigger) {
+          trigger(value);
+        }
       }
 
       if (_this.cb) {
@@ -63954,7 +63963,7 @@ var Controls = function () {
   }, {
     key: 'addTrigger',
     value: function addTrigger(knobId, fn) {
-      this.controls[knobId] = function trigger(value) {
+      this.triggers[knobId] = function trigger(value) {
         if (value === 127) {
           fn(value);
         }
@@ -64155,16 +64164,16 @@ controls.addTrigger(9, function () {
   return controls.loadPreset(initial);
 });
 controls.addTrigger(10, function () {
-  return controls.loadPreset(adsr);
-});
-controls.addTrigger(11, function () {
   return controls.loadPreset(adsrSine);
 });
-controls.addTrigger(12, function () {
+controls.addTrigger(11, function () {
   return controls.loadPreset(adsrTri);
 });
-controls.addTrigger(25, function () {
+controls.addTrigger(12, function () {
   return controls.loadPreset(adsrSquare);
+});
+controls.addTrigger(25, function () {
+  return controls.loadPreset(adsr);
 });
 controls.addTrigger(26, function () {
   return controls.loadPreset(supersawPreset);

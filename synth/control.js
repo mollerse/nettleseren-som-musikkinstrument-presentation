@@ -1,6 +1,7 @@
 class Controls {
   constructor(device, context) {
     this.controls = {};
+    this.triggers = {};
 
     // Configure analyser
     const analyser = context.createAnalyser();
@@ -9,11 +10,17 @@ class Controls {
     analyser.connect(context.destination);
 
 
-    device.on('data', ([, knobId, value]) => {
-      if (this.debug) { console.log(knobId, value); }
+    device.on('data', ([event, knobId, value]) => {
+      if (this.debug) { console.log(event, knobId, value); }
 
-      const control = this.controls[knobId];
-      if (control) { control(value); }
+      if(event === 176) {
+        const control = this.controls[knobId];
+        if (control) { control(value, event); }
+      } else if(event === 144) {
+        const trigger = this.triggers[knobId];
+        if (trigger) { trigger(value); }
+      }
+
 
       if (this.cb) { this.cb(); }
     });
@@ -25,7 +32,7 @@ class Controls {
   }
 
   addTrigger(knobId, fn) {
-    this.controls[knobId] = function trigger(value) {
+    this.triggers[knobId] = function trigger(value) {
       if (value === 127) { fn(value); }
     };
   }
