@@ -29,15 +29,19 @@ class Slides extends Component {
             <SmallHeading>@mollerse</SmallHeading>
           </Slide>
           <Slide>
-            <BigHeading>Musikk og</BigHeading>
-            <BigHeading>Programmering</BigHeading>
-          </Slide>
-          <Slide>
             <BigHeading>Kreativitet</BigHeading>
           </Slide>
           <Slide>
-            <SmallHeading>Enter</SmallHeading>
+            <BigHeading>Musikk</BigHeading>
+            <AppearingBlock>
+              <BigHeading>Og Programmering</BigHeading>
+            </AppearingBlock>
+          </Slide>
+          <Slide>
             <BigHeading caps={false}>WebAudio</BigHeading>
+            <Appear>
+              <Text>Musikalske byggeklosser i nettleseren</Text>
+            </Appear>
           </Slide>
           <Slide align="flex-start flex-start">
             <BigHeading>The Synthesizer</BigHeading>
@@ -173,7 +177,7 @@ class Slides extends Component {
             ]}
           />
           <Slide align="flex-start flex-start">
-            <SynthPanel exclude={{envelope: false, filter: true, oscillators: true}}/>
+            <SynthPanel exclude={{envelope: false, filter: true, oscillators: false}}/>
           </Slide>
           <Slide>
             <BigHeading>Nå har vi en</BigHeading>

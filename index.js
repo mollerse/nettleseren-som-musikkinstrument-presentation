@@ -63397,20 +63397,6 @@ var Slides = function (_Component) {
             _react2.default.createElement(
               BigHeading,
               null,
-              'Musikk og'
-            ),
-            _react2.default.createElement(
-              BigHeading,
-              null,
-              'Programmering'
-            )
-          ),
-          _react2.default.createElement(
-            _spectacle.Slide,
-            null,
-            _react2.default.createElement(
-              BigHeading,
-              null,
               'Kreativitet'
             )
           ),
@@ -63418,14 +63404,36 @@ var Slides = function (_Component) {
             _spectacle.Slide,
             null,
             _react2.default.createElement(
-              SmallHeading,
+              BigHeading,
               null,
-              'Enter'
+              'Musikk'
             ),
+            _react2.default.createElement(
+              AppearingBlock,
+              null,
+              _react2.default.createElement(
+                BigHeading,
+                null,
+                'Og Programmering'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _spectacle.Slide,
+            null,
             _react2.default.createElement(
               BigHeading,
               { caps: false },
               'WebAudio'
+            ),
+            _react2.default.createElement(
+              _spectacle.Appear,
+              null,
+              _react2.default.createElement(
+                _spectacle.Text,
+                null,
+                'Musikalske byggeklosser i nettleseren'
+              )
             )
           ),
           _react2.default.createElement(
@@ -63616,7 +63624,7 @@ var Slides = function (_Component) {
           _react2.default.createElement(
             _spectacle.Slide,
             { align: 'flex-start flex-start' },
-            _react2.default.createElement(_synthPanel2.default, { exclude: { envelope: false, filter: true, oscillators: true } })
+            _react2.default.createElement(_synthPanel2.default, { exclude: { envelope: false, filter: true, oscillators: false } })
           ),
           _react2.default.createElement(
             _spectacle.Slide,
