@@ -59,7 +59,7 @@ const config = {
   attack: 0.5,
   decay: 0.5,
   release: 1,
-  filterFrequency: 25050,
+  filterFrequency: 22050,
   filterResonance: 0,
   lfoFrequency: 0,
   oscillators: [
