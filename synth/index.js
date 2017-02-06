@@ -103,6 +103,20 @@ const supersawPreset = {
   'oscillator.2.detune': 36
 };
 
+const depechePreset = {
+  attack: 0.1,
+  decay: 0.3,
+  release: 0.3,
+  gain: 0.1,
+  filterFrequency: 22050,
+  filterResonance: 0,
+  lfoFrequency: 0,
+  'oscillator.0.type': 'sawtooth',
+  'oscillator.0.detune': -5,
+  'oscillator.1.type': 'triangle',
+  'oscillator.1.detune': 0
+};
+
 const filterPreset = {...supersawPreset, filterFrequency: 3556, filterResonance: 16, lfoFrequency: 8};
 
 controls.addTrigger(9, () => controls.loadPreset(initial));
@@ -111,7 +125,8 @@ controls.addTrigger(11, () => controls.loadPreset(adsrTri));
 controls.addTrigger(12, () => controls.loadPreset(adsrSquare));
 controls.addTrigger(25, () => controls.loadPreset(adsr));
 controls.addTrigger(26, () => controls.loadPreset(supersawPreset));
-controls.addTrigger(27, () => controls.loadPreset(filterPreset));
+controls.addTrigger(27, () => controls.loadPreset(depechePreset));
+controls.addTrigger(28, () => controls.loadPreset(filterPreset));
 
 module.exports.setup = function setup(updateCb) {
   if(!controls) { return {}; }

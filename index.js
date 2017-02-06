@@ -63420,6 +63420,26 @@ var Slides = function (_Component) {
           ),
           _react2.default.createElement(
             _spectacle.Slide,
+            { align: 'flex-start flex-start' },
+            _react2.default.createElement(
+              BigHeading,
+              null,
+              'Det glade 80tall'
+            ),
+            _react2.default.createElement('iframe', { height: '500', width: '888.88', src: 'https://www.youtube.com/embed/_6FBfAQ-NDE', frameBorder: '0' })
+          ),
+          _react2.default.createElement(
+            _spectacle.Slide,
+            { align: 'flex-start flex-start' },
+            _react2.default.createElement(
+              BigHeading,
+              null,
+              'The Synthesizer'
+            ),
+            _react2.default.createElement(_spectacle.Image, { width: '80%', src: 'assets/moog.jpg' })
+          ),
+          _react2.default.createElement(
+            _spectacle.Slide,
             null,
             _react2.default.createElement(
               BigHeading,
@@ -63435,16 +63455,6 @@ var Slides = function (_Component) {
                 'Musikalske byggeklosser i nettleseren'
               )
             )
-          ),
-          _react2.default.createElement(
-            _spectacle.Slide,
-            { align: 'flex-start flex-start' },
-            _react2.default.createElement(
-              BigHeading,
-              null,
-              'The Synthesizer'
-            ),
-            _react2.default.createElement(_spectacle.Image, { width: '100%', src: 'assets/moog.jpg' })
           ),
           _react2.default.createElement(_spectacleCodeSlide2.default, {
             background: 'black',
@@ -63538,7 +63548,7 @@ var Slides = function (_Component) {
             className: 'codeslide',
             lang: 'js',
             code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction synth({ context }) {\n  const oscillator = context.createOscillator();\n  const amp = context.createGain();\n\n  oscillator.connect(amp);\n  amp.connect(context.destination);\n\n  oscillator.start();\n  amp.gain.value = 1;\n\n  function stop() {\n    amp.gain.value = 0;\n    oscillator.stop();\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\n\nlet stop;\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    stop = synth({ context });\n  } else {\n    stop();\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
-            ranges: [{ loc: [0, 0], title: "Bruke keyboardet!" }, { loc: [0, 2], title: "Vi kobler til et keyboard" }, { loc: [23, 24], title: "Vi tar vare på stop-funksjonen" }, { loc: [24, 32], title: "Event handler" }, { loc: [24, 25], title: "Vi får 3 verdier fra MIDI" }, { loc: [25, 28], title: "Når vi trykker ned tangenten" }, { loc: [26, 27], title: "Aktiver noten" }, { loc: [3, 4], title: "Samme som før" }, { loc: [27, 31], title: "Når vi slipper tangenten" }, { loc: [28, 29], title: "Deaktiver noten" }, { loc: [32, 33], title: "Legg til handleren" }]
+            ranges: [{ loc: [0, 0], title: "Bruke keyboardet!" }, { loc: [0, 2], title: "Vi kobler til et keyboard" }, { loc: [23, 24], title: "Et sted å ta vare på stop" }, { loc: [24, 32], title: "Event handler" }, { loc: [24, 25], title: "Vi får 3 verdier fra MIDI" }, { loc: [25, 28], title: "Trykker ned tangenten" }, { loc: [26, 27], title: "Aktiver noten" }, { loc: [3, 4], title: "Samme som før" }, { loc: [27, 31], title: "Slipper tangenten" }, { loc: [28, 29], title: "Deaktiver noten" }, { loc: [32, 33], title: "Legg til handleren" }]
           }),
           _react2.default.createElement(
             _spectacle.Slide,
@@ -63560,7 +63570,7 @@ var Slides = function (_Component) {
             className: 'codeslide',
             lang: 'js',
             code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note }) {\n  const oscillator = context.createOscillator();\n  const amp = context.createGain();\n\n  const frequency = frequencyFromNoteNumber(note);\n  oscillator.frequency.value = frequency;\n  oscillator.type = 'sine';\n\n  oscillator.connect(amp);\n  amp.connect(context.destination);\n\n  oscillator.start();\n  amp.gain.value = 0.3;\n\n  function stop() {\n    amp.gain.value = 0;\n    oscillator.stop();\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
-            ranges: [{ loc: [0, 0], title: "Kunne spille flere noter" }, { loc: [31, 32], title: "Et sted å lagre aktive noter" }, { loc: [34, 35], title: "Lagre den aktive noten" }, { loc: [34, 35], title: "Og sender med som argument" }, { loc: [7, 8], title: "Vi tar inn note argument" }, { loc: [11, 12], title: "Regner ut frekvensen" }, { loc: [3, 6], title: "Hjelpefunksjon" }, { loc: [12, 13], title: "Setter frekvensen" }, { loc: [13, 14], title: "Vi setter typen" }, { loc: [35, 39], title: "Deaktivere noten" }]
+            ranges: [{ loc: [0, 0], title: "Kunne spille flere noter" }, { loc: [31, 32], title: "Et sted å lagre aktive noter" }, { loc: [34, 35], title: "Lagre den aktive noten" }, { loc: [34, 35], title: "Sender med som argument" }, { loc: [7, 8], title: "Vi tar inn note argument" }, { loc: [11, 12], title: "Regner ut frekvensen" }, { loc: [3, 6], title: "Hjelpefunksjon" }, { loc: [12, 13], title: "Setter frekvensen" }, { loc: [13, 14], title: "Vi setter typen" }, { loc: [35, 39], title: "Deaktivere noten" }]
           }),
           _react2.default.createElement(
             _spectacle.Slide,
@@ -63668,8 +63678,8 @@ var Slides = function (_Component) {
             transition: [],
             className: 'codeslide',
             lang: 'js',
-            code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note, config }) {\n  const amp = context.createGain();\n  amp.connect(context.destination);\n\n  const frequency = frequencyFromNoteNumber(note);\n\n  const oscillators = config.oscillators.map(function(oscillatorConfig) {\n    const oscillator = context.createOscillator();\n    oscillator.frequency.value = frequency;\n    oscillator.type = oscillatorConfig.type;\n    oscillator.detune.value = oscillatorConfig.detune;\n\n    oscillator.connect(amp);\n    return oscillator;\n  });\n\n  oscillators.forEach(o => o.start());\n\n  const t = context.currentTime;\n  const maxGain = config.gain * 2;\n  amp.gain.linearRampToValueAtTime(maxGain, t + config.attack);\n  amp.gain.linearRampToValueAtTime(config.gain, t + config.attack + config.decay);\n\n  function stop() {\n    const tStop = context.currentTime + config.release;\n    amp.gain.linearRampToValueAtTime(0, tStop);\n    oscillators.forEach(o => o.stop(tStop));\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\nconst config = {\n  gain: 0.3,\n  attack: 0.5,\n  decay: 0.5,\n  release: 1,\n  oscillators: [\n    { type: 'sawtooth', detune: -36 },\n    { type: 'sawtooth', detune: 0 }\n    { type: 'sawtooth', detune: 36 }\n  ]\n};\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note, config });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
-            ranges: [{ loc: [0, 0], title: "Flere oscillatorer" }, { loc: [45, 50], title: "Config av oscillatorer" }, { loc: [55, 56], title: "Som blir sendt med" }, { loc: [7, 8], title: "Og tatt i mot" }, { loc: [13, 14], title: "Looper over oscillatorer fra config" }, { loc: [14, 17], title: "Som før" }, { loc: [17, 18], title: "Vi tar med et nytt parameter" }, { loc: [19, 20], title: "Kobler til amp'en" }, { loc: [20, 21], title: "Returnerer oscillatoren" }, { loc: [23, 24], title: "Starter alle oscillatorene" }, { loc: [33, 34], title: "Stopper alle oscillatorene" }]
+            code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note, config }) {\n  const amp = context.createGain();\n  amp.connect(context.destination);\n\n  const frequency = frequencyFromNoteNumber(note);\n\n  const oscillators = config.oscillators.map(function(oscillatorConfig) {\n    const oscillator = context.createOscillator();\n    oscillator.frequency.value = frequency;\n    oscillator.type = oscillatorConfig.type;\n    oscillator.detune.value = oscillatorConfig.detune;\n\n    oscillator.connect(amp);\n    return oscillator;\n  });\n\n  oscillators.forEach(o => o.start());\n\n  const t = context.currentTime;\n  const maxGain = config.gain * 2;\n  amp.gain.linearRampToValueAtTime(maxGain, t + config.attack);\n  amp.gain.linearRampToValueAtTime(config.gain, t + config.attack + config.decay);\n\n  function stop() {\n    const tStop = context.currentTime + config.release;\n    amp.gain.linearRampToValueAtTime(0, tStop);\n    oscillators.forEach(o => o.stop(tStop));\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\nconst config = {\n  gain: 0.3,\n  attack: 0.5,\n  decay: 0.5,\n  release: 1,\n  oscillators: [\n    { type: 'sawtooth', detune: -5 },\n    { type: 'triangle', detune: 0 }\n  ]\n};\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note, config });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
+            ranges: [{ loc: [0, 0], title: "Flere oscillatorer" }, { loc: [45, 49], title: "Config av oscillatorer" }, { loc: [54, 55], title: "Som blir sendt med" }, { loc: [7, 8], title: "Og tatt i mot" }, { loc: [13, 14], title: "Looper over oscillatorer" }, { loc: [14, 17], title: "Som før" }, { loc: [17, 18], title: "Setter detune" }, { loc: [19, 20], title: "Kobler til amp'en" }, { loc: [20, 21], title: "Returnerer oscillatoren" }, { loc: [23, 24], title: "Starter alle oscillatorene" }, { loc: [33, 34], title: "Stopper alle oscillatorene" }]
           }),
           _react2.default.createElement(
             _spectacle.Slide,
@@ -63738,7 +63748,7 @@ var Slides = function (_Component) {
             className: 'codeslide',
             lang: 'js',
             code: "import midi from 'web-midi';\nconst keyboard = midi('nanoKEY2 MIDI 1', {});\n\nfunction frequencyFromNoteNumber(note) {\n  return Math.ceil(440 * Math.pow(2, (note - 69) / 12));\n}\n\nfunction synth({ context, note, config }) {\n  const amp = context.createGain();\n  amp.gain.value = 0;\n\n  const filter = context.createBiquadFilter();\n  filter.type = 'lowpass';\n  filter.frequency.value = config.filterFrequency;\n  filter.Q.value = config.filterResonance;\n\n  const lfo = context.createOscillator();\n  lfo.frequency.value = controls.lfoFrequency;\n\n  const lfoGain = context.createGain();\n  lfoGain.gain.value = controls.filterFrequency / 6;\n\n  amp.connect(filter);\n  filter.connect(context.destination);\n  lfo.connect(lfoGain);\n  lfoGain.connect(filter.frequency);\n\n  const frequency = frequencyFromNoteNumber(note);\n\n  const oscillators = config.oscillators.map(function(oscillatorConfig) {\n    const oscillator = context.createOscillator();\n    oscillator.frequency.value = frequency;\n    oscillator.type = oscillatorConfig.type;\n    oscillator.detune.value = oscillatorConfig.detune;\n\n    oscillator.connect(amp);\n    return oscillator;\n  });\n\n  oscillators.forEach(o => o.start());\n\n  const t = context.currentTime;\n  const maxGain = config.gain * 2;\n  amp.gain.linearRampToValueAtTime(maxGain, t + config.attack);\n  amp.gain.linearRampToValueAtTime(config.gain, t + config.attack + config.decay);\n\n  function stop() {\n    const tStop = context.currentTime + config.release;\n    amp.gain.linearRampToValueAtTime(0, tStop);\n    oscillators.forEach(o => o.stop(tStop));\n  }\n\n  return stop;\n}\n\nconst context = new AudioContext();\nconst config = {\n  gain: 0.3,\n  attack: 0.5,\n  decay: 0.5,\n  release: 1,\n  filterFrequency: 22050,\n  filterResonance: 0,\n  lfoFrequency: 0,\n  oscillators: [\n    { type: 'sawtooth', detune: -36 },\n    { type: 'sawtooth', detune: 0 }\n    { type: 'sawtooth', detune: 36 }\n  ]\n};\n\nconst activeVoices = {};\nfunction onKeyboardEvent([velocity, code, note]) {\n  if (code === 144) {\n    activeVoices[note] = synth({ context, note, config });\n  } else {\n    activeVoices[note]();\n    delete activeVoices[note];\n  }\n}\n\nkeyboard.on('data', onKeyboardEvent);\n",
-            ranges: [{ loc: [0, 0], title: "Filter og LFO" }, { loc: [61, 64], title: "Litt ekstra config" }, { loc: [7, 8], title: "Som vi kan lese" }, { loc: [11, 15], title: "Vi lager et filter" }, { loc: [16, 18], title: "Vi lager en LFO" }, { loc: [19, 21], title: "Vi lager en gain til LFO" }, { loc: [19, 21], title: "For å endre range" }, { loc: [22, 26], title: "Vi kobler det sammen" }, { loc: [22, 23], title: "Signalet fra amp gjennom filteret" }, { loc: [23, 24], title: "Signalet fra filteret til høyttaleren" }, { loc: [24, 25], title: "LFO til LFO-gain" }, { loc: [25, 26], title: "Output fra LFO-gain til filterets frekvens" }, { loc: [25, 26], title: "Lar oss styre cutoff!" }]
+            ranges: [{ loc: [0, 0], title: "Filter og LFO" }, { loc: [61, 64], title: "Litt ekstra config" }, { loc: [7, 8], title: "Som vi kan lese" }, { loc: [11, 15], title: "Vi lager et filter" }, { loc: [16, 18], title: "Vi lager en LFO" }, { loc: [19, 21], title: "Vi lager en gain til LFO" }, { loc: [19, 21], title: "For å endre range" }, { loc: [22, 26], title: "Vi kobler det sammen" }, { loc: [22, 23], title: "Amp til filteret" }, { loc: [23, 24], title: "Filteret til høyttaleren" }, { loc: [24, 25], title: "LFO til LFO-gain" }, { loc: [25, 26], title: "LFO-gain til frekvens" }, { loc: [25, 26], title: "Lar oss styre cutoff!" }]
           }),
           _react2.default.createElement(
             _spectacle.Slide,
@@ -64166,6 +64176,20 @@ var supersawPreset = {
   'oscillator.2.detune': 36
 };
 
+var depechePreset = {
+  attack: 0.1,
+  decay: 0.3,
+  release: 0.3,
+  gain: 0.1,
+  filterFrequency: 22050,
+  filterResonance: 0,
+  lfoFrequency: 0,
+  'oscillator.0.type': 'sawtooth',
+  'oscillator.0.detune': -5,
+  'oscillator.1.type': 'triangle',
+  'oscillator.1.detune': 0
+};
+
 var filterPreset = _extends({}, supersawPreset, { filterFrequency: 3556, filterResonance: 16, lfoFrequency: 8 });
 
 controls.addTrigger(9, function () {
@@ -64187,6 +64211,9 @@ controls.addTrigger(26, function () {
   return controls.loadPreset(supersawPreset);
 });
 controls.addTrigger(27, function () {
+  return controls.loadPreset(depechePreset);
+});
+controls.addTrigger(28, function () {
   return controls.loadPreset(filterPreset);
 });
 

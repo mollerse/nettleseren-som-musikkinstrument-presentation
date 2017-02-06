@@ -37,15 +37,19 @@ class Slides extends Component {
               <BigHeading>Og Programmering</BigHeading>
             </AppearingBlock>
           </Slide>
+          <Slide align="flex-start flex-start">
+            <BigHeading>Det glade 80tall</BigHeading>
+            <iframe height="500" width="888.88" src="https://www.youtube.com/embed/_6FBfAQ-NDE" frameBorder="0"></iframe>
+          </Slide>
+          <Slide align="flex-start flex-start">
+            <BigHeading>The Synthesizer</BigHeading>
+            <Image width="80%" src="assets/moog.jpg" />
+          </Slide>
           <Slide>
             <BigHeading caps={false}>WebAudio</BigHeading>
             <Appear>
               <Text>Musikalske byggeklosser i nettleseren</Text>
             </Appear>
-          </Slide>
-          <Slide align="flex-start flex-start">
-            <BigHeading>The Synthesizer</BigHeading>
-            <Image width="100%" src="assets/moog.jpg" />
           </Slide>
           <CodeSlide
             background="black"
@@ -107,13 +111,13 @@ class Slides extends Component {
             ranges={[
               { loc: [0, 0], title: "Bruke keyboardet!" },
               { loc: [0, 2], title: "Vi kobler til et keyboard" },
-              { loc: [23, 24], title: "Vi tar vare på stop-funksjonen" },
+              { loc: [23, 24], title: "Et sted å ta vare på stop" },
               { loc: [24, 32], title: "Event handler" },
               { loc: [24, 25], title: "Vi får 3 verdier fra MIDI" },
-              { loc: [25, 28], title: "Når vi trykker ned tangenten" },
+              { loc: [25, 28], title: "Trykker ned tangenten" },
               { loc: [26, 27], title: "Aktiver noten" },
               { loc: [3, 4], title: "Samme som før" },
-              { loc: [27, 31], title: "Når vi slipper tangenten" },
+              { loc: [27, 31], title: "Slipper tangenten" },
               { loc: [28, 29], title: "Deaktiver noten" },
               { loc: [32, 33], title: "Legg til handleren" },
             ]}
@@ -132,7 +136,7 @@ class Slides extends Component {
               { loc: [0, 0], title: "Kunne spille flere noter" },
               { loc: [31, 32], title: "Et sted å lagre aktive noter" },
               { loc: [34, 35], title: "Lagre den aktive noten" },
-              { loc: [34, 35], title: "Og sender med som argument" },
+              { loc: [34, 35], title: "Sender med som argument" },
               { loc: [7, 8], title: "Vi tar inn note argument" },
               { loc: [11, 12], title: "Regner ut frekvensen" },
               { loc: [3, 6], title: "Hjelpefunksjon" },
@@ -198,12 +202,12 @@ class Slides extends Component {
             code={fs.readFileSync('./examples/multioscillator.js', 'utf8')}
             ranges={[
               { loc: [0, 0], title: "Flere oscillatorer" },
-              { loc: [45, 50], title: "Config av oscillatorer" },
-              { loc: [55, 56], title: "Som blir sendt med" },
+              { loc: [45, 49], title: "Config av oscillatorer" },
+              { loc: [54, 55], title: "Som blir sendt med" },
               { loc: [7, 8], title: "Og tatt i mot" },
-              { loc: [13, 14], title: "Looper over oscillatorer fra config" },
+              { loc: [13, 14], title: "Looper over oscillatorer" },
               { loc: [14, 17], title: "Som før" },
-              { loc: [17, 18], title: "Vi tar med et nytt parameter" },
+              { loc: [17, 18], title: "Setter detune" },
               { loc: [19, 20], title: "Kobler til amp'en" },
               { loc: [20, 21], title: "Returnerer oscillatoren" },
               { loc: [23, 24], title: "Starter alle oscillatorene" },
@@ -246,10 +250,10 @@ class Slides extends Component {
               { loc: [19, 21], title: "Vi lager en gain til LFO" },
               { loc: [19, 21], title: "For å endre range" },
               { loc: [22, 26], title: "Vi kobler det sammen" },
-              { loc: [22, 23], title: "Signalet fra amp gjennom filteret" },
-              { loc: [23, 24], title: "Signalet fra filteret til høyttaleren" },
+              { loc: [22, 23], title: "Amp til filteret" },
+              { loc: [23, 24], title: "Filteret til høyttaleren" },
               { loc: [24, 25], title: "LFO til LFO-gain" },
-              { loc: [25, 26], title: "Output fra LFO-gain til filterets frekvens" },
+              { loc: [25, 26], title: "LFO-gain til frekvens" },
               { loc: [25, 26], title: "Lar oss styre cutoff!" },
             ]}
           />

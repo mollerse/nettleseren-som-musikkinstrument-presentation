@@ -44,9 +44,8 @@ const config = {
   decay: 0.5,
   release: 1,
   oscillators: [
-    { type: 'sawtooth', detune: -36 },
-    { type: 'sawtooth', detune: 0 }
-    { type: 'sawtooth', detune: 36 }
+    { type: 'sawtooth', detune: -5 },
+    { type: 'triangle', detune: 0 }
   ]
 };
 
