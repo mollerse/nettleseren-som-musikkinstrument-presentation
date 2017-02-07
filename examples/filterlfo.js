@@ -56,16 +56,16 @@ function synth({ context, note, config }) {
 const context = new AudioContext();
 const config = {
   gain: 0.3,
-  attack: 0.5,
-  decay: 0.5,
-  release: 1,
+  attack: 0,
+  decay: 0,
+  release: 0,
   filterFrequency: 22050,
   filterResonance: 0,
   lfoFrequency: 0,
   oscillators: [
-    { type: 'sawtooth', detune: -36 },
-    { type: 'sawtooth', detune: 0 }
-    { type: 'sawtooth', detune: 36 }
+    { type: 'sine', detune: 0 },
+    { type: 'sine', detune: 0 }
+    { type: 'sine', detune: 0 }
   ]
 };
 

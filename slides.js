@@ -32,13 +32,17 @@ class Slides extends Component {
             <BigHeading>Kreativitet</BigHeading>
           </Slide>
           <Slide>
+            <BigHeading>Kreativ</BigHeading>
+            <BigHeading>Programmering</BigHeading>
+          </Slide>
+          <Slide>
             <BigHeading>Musikk</BigHeading>
-            <AppearingBlock>
-              <BigHeading>Og Programmering</BigHeading>
-            </AppearingBlock>
+            <Appear>
+              <Text>Programmering gir deg superpowers</Text>
+            </Appear>
           </Slide>
           <Slide align="flex-start flex-start">
-            <BigHeading>Det glade 80tall</BigHeading>
+            <BigHeading>Det glade 80-tall</BigHeading>
             <iframe height="500" width="888.88" src="https://www.youtube.com/embed/_6FBfAQ-NDE" frameBorder="0"></iframe>
           </Slide>
           <Slide align="flex-start flex-start">
@@ -71,10 +75,10 @@ class Slides extends Component {
             <Image width="100%" src="assets/graph1.png" />
           </Slide>
           <Slide>
-            <BigHeading>Men vi har et</BigHeading>
-            <BigHeading>Programmeringspråk</BigHeading>
+            <BigHeading>Vi legger på litt</BigHeading>
+            <BigHeading>Programmering</BigHeading>
             <Appear>
-              <Text>Ikke bare instruering</Text>
+              <Text>Dynamikk er mer spennende</Text>
             </Appear>
           </Slide>
           <CodeSlide
@@ -123,8 +127,8 @@ class Slides extends Component {
             ]}
           />
           <Slide>
-            <BigHeading>Flere ulike</BigHeading>
-            <BigHeading>lyder</BigHeading>
+            <BigHeading>Musikalsk</BigHeading>
+            <BigHeading>Utfoldelse</BigHeading>
           </Slide>
           <CodeSlide
             background="black"
@@ -146,20 +150,20 @@ class Slides extends Component {
             ]}
           />
           <Slide>
-            <BigHeading>Det er mange</BigHeading>
-            <BigHeading>parametere</BigHeading>
+            <BigHeading>Eksperimentere med</BigHeading>
+            <BigHeading>Parametre</BigHeading>
             <Appear>
-              <Text>Ulike noder har ulike verdier</Text>
-            </Appear>
-            <Appear>
-              <Text>...som kan settes ved ulike tidspunkt</Text>
+              <Text>Let&rsquo;s get creative!</Text>
             </Appear>
           </Slide>
           <Slide>
             <BigHeading>Envelopes</BigHeading>
+            <Appear>
+              <Text>Dynamiske toner</Text>
+            </Appear>
           </Slide>
           <Slide align="flex-start flex-start">
-            <BigHeading>Dynamikk i tonene</BigHeading>
+            <BigHeading>Endring i amplitude over tid</BigHeading>
             <Image width="100%" src="assets/adsr.png" />
           </Slide>
           <CodeSlide
@@ -187,7 +191,7 @@ class Slides extends Component {
             <BigHeading>Nå har vi en</BigHeading>
             <BigHeading>ganske kul synth!</BigHeading>
             <Appear>
-              <Text>Men vi kan gjøre den kulere!</Text>
+              <Text>Men vi kan gjøre mer!</Text>
             </Appear>
           </Slide>
           <Slide>
@@ -202,8 +206,8 @@ class Slides extends Component {
             code={fs.readFileSync('./examples/multioscillator.js', 'utf8')}
             ranges={[
               { loc: [0, 0], title: "Flere oscillatorer" },
-              { loc: [45, 49], title: "Config av oscillatorer" },
-              { loc: [54, 55], title: "Som blir sendt med" },
+              { loc: [45, 50], title: "Config av oscillatorer" },
+              { loc: [55, 56], title: "Som blir sendt med" },
               { loc: [7, 8], title: "Og tatt i mot" },
               { loc: [13, 14], title: "Looper over oscillatorer" },
               { loc: [14, 17], title: "Som før" },
@@ -225,14 +229,14 @@ class Slides extends Component {
             <BigHeading>Nå begynner det</BigHeading>
             <BigHeading>å ligne noe</BigHeading>
             <Appear>
-              <Text>Bare en liten mod til!</Text>
+              <Text>Hva mer har WebAudio å by på?</Text>
             </Appear>
           </Slide>
           <Slide>
             <BigHeading>Lowpass Filter &amp;</BigHeading>
             <BigHeading>Low-Frequency Oscillator</BigHeading>
             <Appear>
-              <Text>Gjør tonene interessante!</Text>
+              <Text>Skru på all the parameters!</Text>
             </Appear>
           </Slide>
           <CodeSlide
@@ -266,7 +270,7 @@ class Slides extends Component {
           </Slide>
           <Slide>
             <BigHeading>Nå har vi en</BigHeading>
-            <BigHeading>kul synth!</BigHeading>
+            <BigHeading>skikkelig synth!</BigHeading>
             <Appear>
               <Text>Det er nå moroa begynner</Text>
             </Appear>
@@ -290,6 +294,9 @@ class Slides extends Component {
             </Appear>
             <Appear>
               <Text>Lek med kode</Text>
+            </Appear>
+            <Appear>
+              <Text>Lær noe gøy</Text>
             </Appear>
           </Slide>
           <Slide>
